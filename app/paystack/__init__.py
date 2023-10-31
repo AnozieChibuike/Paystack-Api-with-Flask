@@ -1,1 +1,1 @@
-from initialize import InitializeTransaction
+from app.paystack.initialize import InitializeTransaction

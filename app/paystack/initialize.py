@@ -21,6 +21,6 @@ def InitializeTransaction(email,amount,reference):
 
     # Check the response
     if response.status_code == 200:
-        return list(response.json(),True)
+        return [response.json(),True]
     else:
-        return list(response.json(),False)
+        return [response.json(),False]

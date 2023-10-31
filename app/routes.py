@@ -1,4 +1,4 @@
-from app import app, InitializeTransaction
+from app import app,paystack
 from flask import request,render_template
 from random import randint
 
@@ -12,8 +12,8 @@ def PaystackInit():
     email = data.get('email')
     amount = data.get('amount')
     reference = str(randint(1000000,99999999))
-    init = InitializeTransaction(email,amount,reference)
+    init = paystack.InitializeTransaction(email,amount,reference)
     if init[1]:
         return init[0]
     else:
-        return "failed"
+        return init[0]
