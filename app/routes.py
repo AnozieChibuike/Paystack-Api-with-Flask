@@ -12,4 +12,8 @@ def PaystackInit():
     email = data.get('email')
     amount = data.get('amount')
     reference = str(randint(1000000,99999999))
-    init = InitializeTransaction()
+    init = InitializeTransaction(email,amount,reference)
+    if init[1]:
+        return init[0]
+    else:
+        return "failed"
