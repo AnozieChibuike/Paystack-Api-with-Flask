@@ -21,11 +21,6 @@ def InitializeTransaction(email,amount,reference):
 
     # Check the response
     if response.status_code == 200:
-        print("Transaction initialized successfully.")
-        print("Response data:")
-        print(response.json())
+        return list(response.json(),True)
     else:
-        print("Transaction initialization failed.")
-        print("Response status code:", response.status_code)
-        print("Response content:")
-        print(response.text)
+        return list(response.json(),False)
