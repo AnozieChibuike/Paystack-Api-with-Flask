@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def InitializeTransaction(email,amount,reference):
+def InitializeTransaction(email,amount,reference,callback_url=None):
     url = "https://api.paystack.co/transaction/initialize"
     headers = {
         "Authorization": f"Bearer {os.getenv('PaystackSecretKey')}",
@@ -13,10 +13,11 @@ def InitializeTransaction(email,amount,reference):
     }
     data = {
         "email": email,
-        "amount": amount,
-        "reference": reference
+        "amount": int(str(amount + '00')),
+        "reference": reference,
+        "callback_url": callback_url
     }
-
+    
     response = requests.post(url, headers=headers, json=data)
 
     # Check the response
@@ -24,3 +25,4 @@ def InitializeTransaction(email,amount,reference):
         return [response.json(),True]
     else:
         return [response.json(),False]
+        

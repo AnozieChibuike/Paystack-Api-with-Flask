@@ -8,9 +8,14 @@
 </head>
 <body>
     <form method="post" action="{{ url_for('PaystackInit') }}">
-        <input type="email" name="email">
-        <input type="text" name="amount" readonly value="100">
+        <input type="email" name="email" placeholder="example@mail.com">
+        <input type="text" name="amount" placeholder="100">
         <button type="submit" style="cursor: pointer;background-color: lightblue; width: 200px; height: 30px; border-radius: 2em;">Pay with Paystack</button>
     </form>
+    {% for i in get_flashed_messages() %}
+    <p>{{ i }}</p>
+    {% endfor %}
+    <p>Balance : {{ bal }}</p>
+
 </body>
 </html>
